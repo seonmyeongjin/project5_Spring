@@ -14,7 +14,7 @@ public class LoginController {
     UserDAO userDAO;
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        //하이루
+        //하이
         return"login";
     }
 
