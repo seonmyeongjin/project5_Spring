@@ -10,6 +10,8 @@ public class UserDAO {
     @Autowired
     SqlSessionTemplate sqlSession;
     public UserVO getUser(UserVO vo) {
-        return sqlSession.selectOne("User.getUser", vo);
+        //UserVO userVO = sqlSession.selectOne("member.getUser", vo);
+
+        return sqlSession.selectOne("user.getUser", vo);
     }
 }
