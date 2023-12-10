@@ -17,7 +17,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect(request.getContextPath() + "/login/login");
             return false;
         }
-        return super.preHandle(request, response, handler);
+        return true;
     }
 
     @Override
