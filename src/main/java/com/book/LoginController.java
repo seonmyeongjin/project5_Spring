@@ -11,46 +11,32 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value="/login")
 public class LoginController {
     @Autowired
-    UserDAO userDAO;
+    UserServiceImpl service;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         //하이
-        return"login";
+        return "login";
     }
 
-//    @RequestMapping(value = "/loginOk", method = RequestMethod.POST)
-//    public String loginCheck(HttpSession session, UserVO vo) {
-//        String returnURL = "";
-//        if (session.getAttribute("login") != null) {
-//            session.removeAttribute("login");
-//        }
-//        UserVO loginvo = userDAO.getUser(vo);
-//
-//        if (loginvo != null) { // 로그인성공
-//             System.out.println("로그인성공!");
-//             session.setAttribute("login", loginvo);
-//             returnURL = "redirect:/book/list";
-//        }
-//        else { // 로그인실패
-//            System.out.println("로그인실패!");
-//            returnURL = "redirect:/login/login";
-//        }
-//        return returnURL;
-//    }
-@RequestMapping(value = "/loginOk", method = RequestMethod.POST)
-public String loginCheck(@RequestParam("userid") String userid, @RequestParam("password") String password) {
-    String returnURL = "";
+    @RequestMapping(value = "/loginOk", method = RequestMethod.POST)
+    public String loginCheck(HttpSession session, UserVO vo) {
+        String returnURL = "";
+        if (session.getAttribute("login") != null) {
+            session.removeAttribute("login");
+        }
+        UserVO loginvo = service.getUser(vo);
 
-    if (userid.equals("admin") && password.equals("1234")) { // 로그인성공
-        System.out.println("로그인성공!");
-        returnURL = "redirect:/book/list";
+        if (loginvo != null) { // 로그인성공
+            System.out.println("로그인성공!");
+            session.setAttribute("login", loginvo);
+            returnURL = "redirect:/book/list";
+        } else { // 로그인실패
+            System.out.println("로그인실패!");
+            returnURL = "redirect:/login/login";
+        }
+        return returnURL;
     }
-    else { // 로그인실패
-        System.out.println("로그인실패!");
-        returnURL = "redirect:/login/login";
-    }
-    return returnURL;
-}
     // 로그아웃하는부분
     @RequestMapping(value="/logout")
     public String logout(HttpSession session) {
@@ -58,4 +44,23 @@ public String loginCheck(@RequestParam("userid") String userid, @RequestParam("p
         return "redirect:/login/login";
     }
 }
+    /*
+@RequestMapping(value = "/loginOk", method = RequestMethod.POST)
+public String loginCheck(@RequestParam("userid") String userid, @RequestParam("password") String password) {
+    String returnURL = "";
+
+    if (userid.equals("admin") && password.equals("1234")) { // 로그인성공
+        UserVO.IsLogined = true;
+        System.out.println("로그인성공!");
+        returnURL = "redirect:/book/list";
+    }
+    else { // 로그인실패
+        UserVO.IsLogined = false;
+        System.out.println("로그인실패!");
+        returnURL = "redirect:/login/login";
+    }
+    return returnURL;
+}
+
+}*/
 

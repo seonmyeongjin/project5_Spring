@@ -12,6 +12,6 @@ public class UserDAO {
     public UserVO getUser(UserVO vo) {
         //UserVO userVO = sqlSession.selectOne("member.getUser", vo);
 
-        return sqlSession.selectOne("user.getUser", vo);
+        return sqlSession.selectOne("User.getUser", vo);
     }
 }

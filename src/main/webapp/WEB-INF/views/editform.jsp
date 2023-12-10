@@ -59,7 +59,6 @@
 </head>
 <body>
 
-
 <h1>도서 대여 수정폼</h1>
 <%--@elvariable id="bookVO" type=""--%>
 <form:form action="../editok" method="post" modelAttribute="bookVO">
