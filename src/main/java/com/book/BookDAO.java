@@ -14,6 +14,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import static org.mybatis.spring.SqlSessionUtils.getSqlSession;
+
 @Repository
 public class BookDAO {
 
@@ -26,7 +28,7 @@ public class BookDAO {
     }
 
     public int deleteBook(int seq){
-        int count = sqlSession.selectOne("Book.deleteBook", seq);
+        int count = sqlSession.delete("Book.deleteBook", seq);
         return count;
     }
 

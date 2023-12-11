@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping(value="/login")
 public class LoginController {
     @Autowired
     UserServiceImpl service;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String login() {
         //하이
         return "login";

@@ -61,7 +61,7 @@
 
 <h1>도서 대여 수정폼</h1>
 <%--@elvariable id="bookVO" type=""--%>
-<form:form action="../editok" method="post" modelAttribute="bookVO">
+<form:form action="editok" method="post" modelAttribute="bookVO">
     <form:hidden path="seq"/>
     <table id="edit">
         <tr><td>제목</td><td><form:input path="title"/></td></tr>
