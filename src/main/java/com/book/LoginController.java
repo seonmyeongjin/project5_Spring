@@ -34,7 +34,7 @@ public class LoginController {
             returnURL = "redirect:/book/list";
         } else { // 로그인실패
             System.out.println("로그인실패!");
-            returnURL = "redirect:/login/login";
+            returnURL = "redirect:/";
         }
         return returnURL;
     }

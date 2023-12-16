@@ -62,6 +62,16 @@
     </style>
 </head>
 <body>
+<%
+    Object loginInfo = session.getAttribute("login");
+
+    // 로그인 정보가 없다면 로그인 페이지로 리다이렉션
+    if (loginInfo == null) {
+        response.sendRedirect(request.getContextPath() + "/");
+        //response.sendRedirect("redirect:/");
+        return;
+    }
+%>
 <div class="board_wrap">
     <div class="board_top">
         <h1>도서대여 세부내용</h1>

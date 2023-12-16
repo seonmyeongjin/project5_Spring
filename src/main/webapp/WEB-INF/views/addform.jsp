@@ -74,6 +74,16 @@
     </style>
 </head>
 <body>
+<%
+    Object loginInfo = session.getAttribute("login");
+
+    // 로그인 정보가 없다면 로그인 페이지로 리다이렉션
+    if (loginInfo == null) {
+        response.sendRedirect(request.getContextPath() + "/");
+        //response.sendRedirect("redirect:/");
+        return;
+    }
+%>
 
 <h1>Add New Post</h1>
 <form action="addok" method="post">
