@@ -8,13 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
         Object obj = session.getAttribute("login");
+        System.out.println("hi");
+        System.out.println(session.getAttribute("login"));
         if (obj == null) {
             response.sendRedirect(request.getContextPath() + "/login/login");
+
             return false;
         }
         return true;

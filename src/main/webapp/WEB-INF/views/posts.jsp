@@ -60,9 +60,20 @@
     <title>Title</title>
 </head>
 <body>
+<%= "Hello, World!" %>
+    <%
+    Object loginInfo = session.getAttribute("login");
+
+        // 로그인 정보가 없다면 로그인 페이지로 리다이렉션
+        if (loginInfo == null) {
+            response.sendRedirect("login/login");
+            return;
+        }
+    %>
     <img src="../img/img.png" width="300"/>
     <h1>도서 대여 서비스</h1>
     <table id="list">
+
         <tr>
             <th>No</th>
             <th>제목</th>

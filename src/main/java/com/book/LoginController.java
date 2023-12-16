@@ -29,6 +29,8 @@ public class LoginController {
         if (loginvo != null) { // 로그인성공
             System.out.println("로그인성공!");
             session.setAttribute("login", loginvo);
+            System.out.println(loginvo);
+            System.out.println(session.getAttribute("login"));
             returnURL = "redirect:/book/list";
         } else { // 로그인실패
             System.out.println("로그인실패!");
