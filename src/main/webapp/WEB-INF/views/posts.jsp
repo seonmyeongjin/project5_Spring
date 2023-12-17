@@ -47,6 +47,16 @@
     <title>Title</title>
 </head>
 <body>
+<%
+    Object loginInfo = session.getAttribute("login");
+
+    // 로그인 정보가 없다면 로그인 페이지로 리다이렉션
+    if (loginInfo == null) {
+        response.sendRedirect(request.getContextPath() + "/");
+        //response.sendRedirect("redirect:/");
+        return;
+    }
+%>
 <header data-bs-theme="dark">
     <div class="collapse text-bg-dark" id="navbarHeader">
         <div class="container">
